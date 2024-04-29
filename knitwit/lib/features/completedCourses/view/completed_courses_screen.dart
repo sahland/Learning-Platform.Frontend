@@ -1,17 +1,17 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:knitwit/features/completedCourses/widgets/completed_courses_list.dart';
 import 'package:knitwit/features/knitwit_title.dart';
 
 @RoutePage()
 class CompletedCourseScreen extends StatelessWidget {
-  const CompletedCourseScreen({super.key})
-  
+  const CompletedCourseScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -29,12 +29,15 @@ class CompletedCourseScreen extends StatelessWidget {
               icon: SvgPicture.asset('./assets/icons/arrow_left_icon.svg'),
             ),
             backgroundColor: theme.primaryColor,
-            actions: [
+            actions: const [
               SizedBox(width: 50, height: 50)
             ],
           ),
           SliverList.builder(
-              itemBuilder: (context, index) => Scaffold()
+              itemBuilder: (context, index) => const CompletedCoursesList(
+                nameCourse: 'Figma ipsum component variant main layer.',
+                imagePath: './assets/images/test_image_mini.jpg',
+              )
           )
         ],
       ),

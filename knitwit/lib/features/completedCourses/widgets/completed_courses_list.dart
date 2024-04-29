@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:knitwit/router/router.dart';
 
 class CompletedCoursesList extends StatelessWidget {
   final String nameCourse;
@@ -20,7 +22,9 @@ class CompletedCoursesList extends StatelessWidget {
       color: theme.primaryColor,
       margin: const EdgeInsets.all(5),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          context.router.push(const CourseRoute());
+        },
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column (
@@ -50,7 +54,7 @@ class CompletedCoursesList extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                         ],
                       )
                   )
