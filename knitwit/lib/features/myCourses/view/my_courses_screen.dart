@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knitwit/features/knitwit_title.dart';
+import 'package:knitwit/features/myCourses/widget/my_courses_list.dart';
 
 @RoutePage()
 class MyCoursesScreen extends StatelessWidget {
@@ -21,7 +21,7 @@ class MyCoursesScreen extends StatelessWidget {
             floating: true,
             elevation: 0,
             expandedHeight: 65,
-            title: const KnitwitTitle(title: 'title'),
+            title: const KnitwitTitle(title: 'Мои курсы'),
             leading: IconButton(
               onPressed: () {
                 context.router.maybePop();
@@ -33,7 +33,12 @@ class MyCoursesScreen extends StatelessWidget {
               SizedBox(width: 50, height: 50)
             ],
           ),
-
+          SliverList.builder(
+              itemBuilder: (context, index) => const MyCoursesList(
+                  nameCourse: 'Figma ipsum component variant main layer.',
+                  imagePath: './assets/images/test_image_mini.jpg'
+              )
+          )
         ],
       ),
     );
