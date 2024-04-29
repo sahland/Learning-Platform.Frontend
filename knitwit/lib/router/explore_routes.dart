@@ -1,14 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:knitwit/router/router.dart';
 
-class CatalogRoutes {
+class ExploreRoutes {
   static final routes = AutoRoute(
-    page: CourseRoute.page,
+    page: ExploreWrapperRoute.page,
     children: [
       AutoRoute(
         page: ExploreRoute.page,
         initial: true,
       ),
+      AutoRoute(page: CourseRoute.page),
+      AutoRoute(page: ModuleRoute.page)
     ]
   );
 }
