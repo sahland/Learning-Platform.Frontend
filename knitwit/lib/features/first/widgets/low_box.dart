@@ -11,10 +11,11 @@ class _LowBoxState extends State<LowBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: const Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(width: 10),
           Flexible(
             flex: 1,
             child: SizedBox(
@@ -23,7 +24,7 @@ class _LowBoxState extends State<LowBox> {
                 elevation: 4,
                 color: Color(0xFF181818),
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -53,7 +54,7 @@ class _LowBoxState extends State<LowBox> {
               ),
             ),
           ),
-          const SizedBox(width: 20),
+          SizedBox(width: 20),
           Flexible(
             flex: 2,
             child: SizedBox(
@@ -62,7 +63,7 @@ class _LowBoxState extends State<LowBox> {
                 elevation: 4,
                 color: Color(0xFF181818),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

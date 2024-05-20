@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knitwit/features/editor/widgets/editor_buttons.dart';
 import 'package:knitwit/features/editor/widgets/editor_info.dart';
-import 'package:knitwit/features/knitwit_title.dart';
-
+import '../../../common/widgets/knitwit_title.dart';
 import '../widgets/editor_modules.dart';
 
 @RoutePage()

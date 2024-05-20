@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:knitwit/features/first/widgets/favorites_button.dart';
@@ -10,6 +11,7 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
+    AppMetrica.reportEvent('Viewing the first screen');
     final theme = Theme.of(context);
 
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:knitwit/features/settings/widgets/settings_notifications.dart';
 
 @RoutePage()
 class SettingsScreen extends StatelessWidget {
@@ -39,9 +40,12 @@ class SettingsScreen extends StatelessWidget {
               icon: SvgPicture.asset('./assets/icons/arrow_left_icon.svg'),
             ),
             backgroundColor: theme.primaryColor,
-            actions: [
+            actions: const [
               SizedBox(width: 50, height: 50)
             ],
+          ),
+          SliverToBoxAdapter(
+            child: SettingsNotifications(),
           )
         ],
       ),

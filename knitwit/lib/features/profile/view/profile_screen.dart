@@ -1,9 +1,11 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knitwit/features/knitwit_title.dart';
 import 'package:knitwit/features/profile/widgets/profile_user.dart';
 import 'package:knitwit/router/router.dart';
+
+import '../../../common/widgets/knitwit_title.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +14,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     final theme = Theme.of(context);
+    AppMetrica.reportEvent('Viewing the profile');
 
     return Scaffold(
       body: CustomScrollView(
@@ -26,28 +29,28 @@ class ProfileScreen extends StatelessWidget {
             title: const KnitwitTitle(title: 'Мой профиль'),
             leading: IconButton(
               onPressed: () {
+                context.router.push(const NotificationsRoute());
               },
               icon: SvgPicture.asset(
-                './assets/icons/arrow_left_icon.svg',
+                './assets/icons/bell_icon.svg',
               ),
               color: Colors.white,
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    context.router.push(const NotificationsRoute());
-                  },
+                onPressed: () {
+                  context.router.push(const SettingsRoute());
+                },
                 icon: SvgPicture.asset(
-                  './assets/icons/mail_icon.svg',
+                  './assets/icons/settings_icon.svg',
                 ),
                 color: Colors.white,
-              )
+              ),
             ],
             elevation: 4,
           ),
-          const SliverToBoxAdapter(
-            child:
-            UserProfile(),
+           SliverToBoxAdapter(
+            child: ProfileUsers(),
           ),
         ],
       ),

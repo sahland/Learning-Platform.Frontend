@@ -27,7 +27,7 @@ class _LastCourseBoxState extends State<LastCourseBox> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       elevation: 4,
       margin: const EdgeInsets.all(20),
-      color: Color(0xFF181818),
+      color: const Color(0xFF181818),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Column(
@@ -54,7 +54,7 @@ class _LastCourseBoxState extends State<LastCourseBox> {
                 minHeight: 16,
                 borderRadius: BorderRadius.circular(22),
                 value: widget.progress,
-                color: Color(0xFF49DFC4),
+                color: const Color(0xFF49DFC4),
               ),
             ),
             const SizedBox(height: 15),

@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:knitwit/features/explore/widgets/knitwit_courses_list.dart';
@@ -10,6 +11,7 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppMetrica.reportEvent('Viewing the catalog');
     final theme = Theme.of(context);
     final List<Tag> tags = [
       Tag(text: 'Все'),
@@ -62,7 +64,7 @@ class ExploreScreen extends StatelessWidget {
             ),
             SliverList.builder(
               itemBuilder: (context, index) => KnitwitCoursesList(
-                  nameCourse: 'nameCourse',
+                  nameCourse: 'Course name',
                   imagePath: './assets/images/test_image_mini.jpg',
                   description: 'Description figma ipsum component variant main layer. Follower clip asset layer outline asset.',
                   tags: courseTags

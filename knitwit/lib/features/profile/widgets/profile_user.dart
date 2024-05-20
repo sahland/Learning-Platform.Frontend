@@ -1,16 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:knitwit/common/widgets/base_long_button.dart';
 import 'package:knitwit/router/router.dart';
 
-class UserProfile extends StatefulWidget {
+class ProfileUsers extends StatefulWidget {
 
-  const UserProfile({super.key,});
+  const ProfileUsers({super.key,});
 
   @override
-  State<UserProfile> createState() => _UserProfileState();
+  State<ProfileUsers> createState() => _ProfileUsersState();
 }
 
-class _UserProfileState extends State<UserProfile>{
+class _ProfileUsersState extends State<ProfileUsers>{
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -94,150 +95,29 @@ class _UserProfileState extends State<UserProfile>{
             ),
           ),
           const SizedBox(height: 10),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-            ),
-            onPressed: () {
-              context.router.push(const FavoriteCoursesRoute());
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Отслеживаемые курсы',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+          BaseLongButton(
+              onPressed: () async =>
+                await context.router.push(const FavoriteCoursesRoute()),
+              title: 'Отслеживаемые курсы',
+              textColor: Colors.white,
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-            ),
-            onPressed: () {
-              context.router.push(const CompletedCourseRoute());
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Пройденные курсы',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+          BaseLongButton(
+              onPressed: () async =>
+                await context.router.push(const CompletedCourseRoute()),
+              title: 'Пройденные курсы',
+              textColor: Colors.white,
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-            ),
-            onPressed: () {
-              context.router.push(const EditorRoute());
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Создать курс',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+          BaseLongButton(
+              onPressed: () async =>
+                await context.router.push(const EditorRoute()),
+              title: 'Создать курсы',
+              textColor: Colors.white,
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-            ),
-            onPressed: () {
-              context.router.push(const MyCoursesRoute());
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Созданные мной курсы',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-            ),
-            onPressed: () {
-              context.router.push(const SettingsRoute());
-            },
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.zero,
-              child: const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Настройки',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
+          BaseLongButton(
+              onPressed: () async =>
+                await context.router.push(const MyCoursesRoute()),
+              title: 'Созданные мной курсы',
+            textColor: Colors.white,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(

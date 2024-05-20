@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knitwit/features/completedCourses/widgets/completed_courses_list.dart';
-import 'package:knitwit/features/knitwit_title.dart';
+import '../../../common/widgets/knitwit_title.dart';
 
 @RoutePage()
 class CompletedCourseScreen extends StatelessWidget {

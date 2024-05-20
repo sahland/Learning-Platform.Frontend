@@ -18,6 +18,9 @@ class CourseInfo extends StatefulWidget {
 }
 
 class _CourseInfoState extends State<CourseInfo> {
+  late bool isFavorite = false;
+  late bool _selectedEstimation = false;
+  late bool _isEstimationSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -92,9 +95,48 @@ class _CourseInfoState extends State<CourseInfo> {
             ),
             const Spacer(),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() => isFavorite = !isFavorite);
+              },
               icon: SvgPicture.asset('./assets/icons/star_icon.svg'),
+              selectedIcon: SvgPicture.asset(
+                  './assets/icons/star_icon.svg',
+                  color: const Color(0xFFBE1257),
+              ),
+              isSelected: isFavorite,
             ),
+            // Row(
+            //   children: [
+            //     IconButton(
+            //       onPressed: () {
+            //         setState(() {
+            //           _selectedEstimation = true;
+            //           _isEstimationSelected = true;
+            //         });
+            //       },
+            //       icon: SvgPicture.asset('./assets/icons/thumb_up_icon.svg'),
+            //       selectedIcon: SvgPicture.asset(
+            //         './assets/icons/thumb_up_icon.svg.svg',
+            //         color: const Color(0xFFBE1257),
+            //       ),
+            //       isSelected: _isEstimationSelected && _selectedEstimation,
+            //     ),
+            //     IconButton(
+            //       onPressed: () {
+            //         setState(() {
+            //           _selectedEstimation = false;
+            //           _isEstimationSelected = true;
+            //         });
+            //       },
+            //       icon: SvgPicture.asset('./assets/icons/thumb_down_icon.svg.svg'),
+            //       selectedIcon: SvgPicture.asset(
+            //         './assets/icons/thumb_down_icon.svg',
+            //         color: const Color(0xFFBE1257),
+            //       ),
+            //       isSelected: _isEstimationSelected && !_selectedEstimation,
+            //     ),
+            //   ],
+            // ),
            const  SizedBox(width: 10)
           ],
         )

@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 activeIcon: SvgPicture.asset(
                   './assets/icons/home_icon.svg',
-                  colorFilter: ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
                 ),
                 label: '',
               ),
@@ -59,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 activeIcon: SvgPicture.asset(
                   './assets/icons/compas_icon.svg',
-                  colorFilter: ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
                 ),
                 label: 'Каталог',
               ),
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 activeIcon: SvgPicture.asset(
                   './assets/icons/user_icon.svg',
-                  colorFilter: ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(Color(0xFFBE1257), BlendMode.srcIn),
                 ),
                 label: 'Профиль',
               ),

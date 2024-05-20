@@ -64,7 +64,7 @@ class FavoriteCoursesList extends StatelessWidget {
                               minHeight: 6,
                               borderRadius: BorderRadius.circular(22),
                               value: percentCompleted,
-                              color: Color(0xFF48DFC4),
+                              color: const Color(0xFF48DFC4),
                             ),
                           )
                         ],

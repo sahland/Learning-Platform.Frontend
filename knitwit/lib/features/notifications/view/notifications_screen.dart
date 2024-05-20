@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:knitwit/features/notifications/widgets/notifications_list.dart';
 
-import '../../knitwit_title.dart';
+import '../../../common/widgets/knitwit_title.dart';
 
 @RoutePage()
 class NotificationsScreen extends StatelessWidget {

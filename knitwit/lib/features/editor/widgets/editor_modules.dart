@@ -12,12 +12,12 @@ class EditorAddModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: Column(
         children: [
           Row(
           children: [
-            Text(
+            const Text(
               'Модули',
               style: TextStyle(
                   color: Colors.white,
@@ -25,16 +25,16 @@ class EditorAddModule extends StatelessWidget {
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w500),
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF404040),
+                backgroundColor: const Color(0xFF404040),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(73),
                 ),
               ),
               onPressed: () {},
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
                   children: [
@@ -56,12 +56,12 @@ class EditorAddModule extends StatelessWidget {
         Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
           elevation: 0,
-          color: Color(0xFF000000).withOpacity(0.25),
+          color: const Color(0xFF000000).withOpacity(0.25),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
             child: Row(
               children: [
-                 Text(
+                const Text(
                   'Название модуля',
                    textAlign: TextAlign.start,
                    style: TextStyle(
@@ -71,7 +71,7 @@ class EditorAddModule extends StatelessWidget {
                       fontWeight: FontWeight.w500
                      ),
                    ),
-                   Spacer(),
+                   const Spacer(),
                    IconButton(
                     onPressed: () {
                       context.router.push(const ModuleRoute());
@@ -80,7 +80,7 @@ class EditorAddModule extends StatelessWidget {
                       './assets/icons/edit_icon.svg'
                      )
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     IconButton(
                     onPressed: () {},
                      icon: SvgPicture.asset(

@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knitwit/features/knitwit_title.dart';
 import 'package:knitwit/features/profileRedact/widgets/redact_window.dart';
+
+import '../../../common/widgets/knitwit_title.dart';
 
 @RoutePage()
 class ProfileRedactScreen extends StatelessWidget {
@@ -29,7 +30,7 @@ class ProfileRedactScreen extends StatelessWidget {
               },
               icon: SvgPicture.asset('./assets/icons/arrow_left_icon.svg'),
             ),
-            actions: [
+            actions: const [
               SizedBox(width: 50, height: 50,)
             ],
             elevation: 4,

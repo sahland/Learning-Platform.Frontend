@@ -168,7 +168,7 @@ class _RedactWindowState extends State<RedactWindow> {
               child: const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Выйти из аккаунта',
+                  'Удалить аккаунт',
                   style: TextStyle(
                     color: Color(0xFFBE1257),
                     fontSize: 16,
