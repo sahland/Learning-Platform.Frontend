@@ -18,6 +18,7 @@ import '../features/explore/view/explore_wrapper_screen.dart';
 import '../features/profile/view/profile_wrapper_screen.dart';
 import '../features/profileRedact/view/profile_redact_screen.dart';
 import '../features/settings/view/settings_screen.dart';
+import 'first_routes.dart';
 
 part 'router.gr.dart';
 
@@ -30,10 +31,7 @@ class AppRouter extends _$AppRouter {
       path: '/',
       initial: true,
       children: [
-        AutoRoute(
-          page: FirstRoute.page,
-          path: 'first',
-        ),
+        FirstRoutes.routes,
         ExploreRoutes.routes,
         ProfileRoutes.routes
       ]
