@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.appmetrica.analytics:gradle:0.10.0'
+        classpath 'com.yandex.android:appmetrica-build-plugin:0.7.0'
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -16,3 +26,5 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+
