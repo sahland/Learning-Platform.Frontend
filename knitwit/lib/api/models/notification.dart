@@ -13,8 +13,8 @@ class Notification extends Equatable {
     required this.createdAt
   });
 
-  final String notificationId;
-  final String senderId;
+  final int notificationId;
+  final int senderId;
   final String title;
   final String message;
   final String createdAt;
@@ -24,5 +24,5 @@ class Notification extends Equatable {
   Map<String, dynamic> toJson() => _$NotificationToJson(this);
 
   @override
-  List<Object> get props => [title ,message];
+  List<Object> get props => [notificationId, senderId, title, message, createdAt];
 }

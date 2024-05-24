@@ -7,8 +7,8 @@ part of 'notification.dart';
 // **************************************************************************
 
 Notification _$NotificationFromJson(Map<String, dynamic> json) => Notification(
-      notificationId: json['notificationId'] as String,
-      senderId: json['senderId'] as String,
+      notificationId: (json['notificationId'] as num).toInt(),
+      senderId: (json['senderId'] as num).toInt(),
       title: json['title'] as String,
       message: json['message'] as String,
       createdAt: json['createdAt'] as String,

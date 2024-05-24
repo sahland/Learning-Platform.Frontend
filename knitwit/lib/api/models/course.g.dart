@@ -7,17 +7,16 @@ part of 'course.dart';
 // **************************************************************************
 
 Course _$CourseFromJson(Map<String, dynamic> json) => Course(
-      courseId: json['courseId'] as String,
-      creator: User.fromJson(json['creator'] as Map<String, dynamic>),
+      courseId: (json['courseId'] as num).toInt(),
+      creator: Creator.fromJson(json['creator'] as Map<String, dynamic>),
       title: json['title'] as String,
       publishedDate: json['publishedDate'] as String,
-      section: (json['section'] as List<dynamic>)
-          .map((e) => CourseSection.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      mediaFile: MediaFile.fromJson(json['mediaFile'] as Map<String, dynamic>),
-      tags: (json['tags'] as List<dynamic>)
-          .map((e) => Tag.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      sections: (json['sections'] as num).toInt(),
+      courseAvatarKey: json['courseAvatarKey'] as String,
+      tags: Tags.fromJson(json['tags'] as Map<String, dynamic>),
+      subscribers:
+          Subscribers.fromJson(json['subscribers'] as Map<String, dynamic>),
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
@@ -25,7 +24,9 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'creator': instance.creator,
       'title': instance.title,
       'publishedDate': instance.publishedDate,
-      'section': instance.section,
-      'mediaFile': instance.mediaFile,
+      'sections': instance.sections,
+      'courseAvatarKey': instance.courseAvatarKey,
       'tags': instance.tags,
+      'subscribers': instance.subscribers,
+      'status': instance.status,
     };

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'creator.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
+Creator _$CreatorFromJson(Map<String, dynamic> json) => Creator(
       userId: (json['userId'] as num).toInt(),
       nickname: json['nickname'] as String,
       userAvatarKey: json['userAvatarKey'] as String,
@@ -17,7 +17,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       ratings: Ratings.fromJson(json['ratings'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+Map<String, dynamic> _$CreatorToJson(Creator instance) => <String, dynamic>{
       'userId': instance.userId,
       'nickname': instance.nickname,
       'userAvatarKey': instance.userAvatarKey,

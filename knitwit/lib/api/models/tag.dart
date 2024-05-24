@@ -7,16 +7,18 @@ part 'tag.g.dart';
 class Tag extends Equatable {
   const Tag({
     required this.tagId,
-    required this.tagName
+    required this.tagName,
+    required this.courses
   });
 
-  final String tagId;
+  final int tagId;
   final String tagName;
+  final List<String> courses;
 
   factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
 
   Map<String, dynamic> toJson() => _$TagToJson(this);
 
   @override
-  List<Object> get props => [tagName];
+  List<Object> get props => [tagId, tagName, courses];
 }

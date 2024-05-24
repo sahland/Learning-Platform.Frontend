@@ -2,17 +2,18 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:knitwit/api/models/models.dart';
 
-part 'user.g.dart';
+part 'creator.g.dart';
 
 @JsonSerializable()
-class User extends Equatable {
-  const User({
+class Creator extends Equatable {
+  const Creator({
     required this.userId,
     required this.nickname,
     required this.userAvatarKey,
     required this.courses,
     required this.learningProgresses,
     required this.ratings,
+
   });
 
   final int userId;
@@ -22,12 +23,11 @@ class User extends Equatable {
   final LearningProgresses learningProgresses;
   final Ratings ratings;
 
+  factory Creator.fromJson(Map<String, dynamic> json) => _$CreatorFromJson(json);
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  Map<String, dynamic> toJson() => _$CreatorToJson(this);
 
   @override
-  List<Object> get props => [userId, nickname, userAvatarKey,
-                           courses, learningProgresses, ratings];
+  List<Object> get props => [userId, nickname, userAvatarKey, courses];
 }
+

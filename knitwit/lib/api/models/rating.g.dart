@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'course_rating.dart';
+part of 'rating.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CourseRating _$CourseRatingFromJson(Map<String, dynamic> json) => CourseRating(
-      ratingId: json['ratingId'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
-      course: Course.fromJson(json['course'] as Map<String, dynamic>),
+Rating _$RatingFromJson(Map<String, dynamic> json) => Rating(
+      ratingId: (json['ratingId'] as num).toInt(),
+      user: json['user'] as String,
+      course: json['course'] as String,
       value: (json['value'] as num).toInt(),
     );
 
-Map<String, dynamic> _$CourseRatingToJson(CourseRating instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RatingToJson(Rating instance) => <String, dynamic>{
       'ratingId': instance.ratingId,
       'user': instance.user,
       'course': instance.course,
