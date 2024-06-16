@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:knitwit/api/models/models.dart';
 
-part 'rating.g.dart';
+part 'course_rating.g.dart';
 
 @JsonSerializable()
-class Rating extends Equatable {
-  const Rating({
+class CourseRating extends Equatable {
+  const CourseRating({
     required this.ratingId,
     required this.user,
     required this.course,
@@ -17,9 +18,9 @@ class Rating extends Equatable {
   final String course;
   final int value;
 
-  factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
+  factory CourseRating.fromJson(Map<String, dynamic> json) => _$CourseRatingFromJson(json);
 
-  Map<String, dynamic> toJson() => _$RatingToJson(this);
+  Map<String, dynamic> toJson() => _$CourseRatingToJson(this);
 
   @override
   List<Object> get props => [ratingId, user, course, value];

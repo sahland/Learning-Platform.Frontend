@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'notification.g.dart';
 
 @JsonSerializable()
-class Notification extends Equatable {
-  const Notification({
+class NotificationModel extends Equatable {
+  const NotificationModel({
     required this.notificationId,
     required this.senderId,
     required this.title,
@@ -19,9 +19,9 @@ class Notification extends Equatable {
   final String message;
   final String createdAt;
 
-  factory Notification.fromJson(Map<String, dynamic> json) => _$NotificationFromJson(json);
+  factory NotificationModel.fromJson(Map<String, dynamic> json) => _$NotificationModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificationToJson(this);
+  Map<String, dynamic> toJson() => _$NotificationModelToJson(this);
 
   @override
   List<Object> get props => [notificationId, senderId, title, message, createdAt];

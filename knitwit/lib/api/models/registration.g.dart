@@ -1,23 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'registration.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      userId: (json['userId'] as num).toInt(),
+Registration _$RegistrationFromJson(Map<String, dynamic> json) => Registration(
       username: json['username'] as String,
-      nickname: json['nickname'] as String,
-      avatarKey: json['avatarKey'] as String,
+      password: json['password'] as String,
+      confirmPassword: json['confirmPassword'] as String,
       email: json['email'] as String,
     );
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'userId': instance.userId,
+Map<String, dynamic> _$RegistrationToJson(Registration instance) =>
+    <String, dynamic>{
       'username': instance.username,
-      'avatarKey': instance.avatarKey,
+      'password': instance.password,
+      'confirmPassword': instance.confirmPassword,
       'email': instance.email,
-      'nickname': instance.nickname,
     };

@@ -10,7 +10,7 @@ LearningProgress _$LearningProgressFromJson(Map<String, dynamic> json) =>
     LearningProgress(
       progressId: (json['progressId'] as num).toInt(),
       user: json['user'] as String,
-      section: (json['section'] as num).toInt(),
+      section: CourseSection.fromJson(json['section'] as Map<String, dynamic>),
       completed: json['completed'] as bool,
     );
 

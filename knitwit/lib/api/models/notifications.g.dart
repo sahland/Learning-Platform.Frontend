@@ -9,7 +9,7 @@ part of 'notifications.dart';
 Notifications _$NotificationsFromJson(Map<String, dynamic> json) =>
     Notifications(
       notification: (json['notification'] as List<dynamic>)
-          .map((e) => Notification.fromJson(e as Map<String, dynamic>))
+          .map((e) => NotificationModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

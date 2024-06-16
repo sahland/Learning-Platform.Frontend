@@ -11,21 +11,19 @@ class Course extends Equatable {
     required this.creator,
     required this.title,
     required this.publishedDate,
-    required this.sections,
     required this.courseAvatarKey,
+    required this.sections,
     required this.tags,
-    required this.subscribers,
     required this.status
   });
 
   final int courseId;
-  final Creator creator;
+  final User creator;
   final String title;
   final String publishedDate;
-  final int sections;
   final String courseAvatarKey;
-  final Tags tags;
-  final Subscribers subscribers;
+  final List<CourseSection> sections;
+  final List<Tag> tags;
   final String status;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);
@@ -34,5 +32,5 @@ class Course extends Equatable {
 
   @override
   List<Object> get props => [courseId, creator, title, publishedDate, sections,
-                            courseAvatarKey, tags, subscribers, status];
+                            courseAvatarKey, tags, status];
 }

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:knitwit/api/models/models.dart';
 
 part 'learning_progress.g.dart';
 
@@ -15,7 +16,7 @@ class LearningProgress extends Equatable {
 
   final int progressId;
   final String user;
-  final int section;
+  final CourseSection section;
   final bool completed;
 
   factory LearningProgress.fromJson(Map<String, dynamic> json) => _$LearningProgressFromJson(json);

@@ -8,17 +8,17 @@ class Tag extends Equatable {
   const Tag({
     required this.tagId,
     required this.tagName,
-    required this.courses
+    //required this.courses
   });
 
   final int tagId;
   final String tagName;
-  final List<String> courses;
+  //final Courses courses;
 
   factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
 
   Map<String, dynamic> toJson() => _$TagToJson(this);
 
   @override
-  List<Object> get props => [tagId, tagName, courses];
+  List<Object> get props => [tagId, tagName];
 }

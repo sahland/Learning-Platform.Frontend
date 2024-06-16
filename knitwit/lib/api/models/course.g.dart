@@ -8,14 +8,16 @@ part of 'course.dart';
 
 Course _$CourseFromJson(Map<String, dynamic> json) => Course(
       courseId: (json['courseId'] as num).toInt(),
-      creator: Creator.fromJson(json['creator'] as Map<String, dynamic>),
+      creator: User.fromJson(json['creator'] as Map<String, dynamic>),
       title: json['title'] as String,
       publishedDate: json['publishedDate'] as String,
-      sections: (json['sections'] as num).toInt(),
       courseAvatarKey: json['courseAvatarKey'] as String,
-      tags: Tags.fromJson(json['tags'] as Map<String, dynamic>),
-      subscribers:
-          Subscribers.fromJson(json['subscribers'] as Map<String, dynamic>),
+      sections: (json['sections'] as List<dynamic>)
+          .map((e) => CourseSection.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tags: (json['tags'] as List<dynamic>)
+          .map((e) => Tag.fromJson(e as Map<String, dynamic>))
+          .toList(),
       status: json['status'] as String,
     );
 
@@ -24,9 +26,8 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'creator': instance.creator,
       'title': instance.title,
       'publishedDate': instance.publishedDate,
-      'sections': instance.sections,
       'courseAvatarKey': instance.courseAvatarKey,
+      'sections': instance.sections,
       'tags': instance.tags,
-      'subscribers': instance.subscribers,
       'status': instance.status,
     };

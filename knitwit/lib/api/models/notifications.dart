@@ -10,7 +10,7 @@ class Notifications extends Equatable {
     required this.notification
   });
 
-  final List<Notification> notification;
+  final List<NotificationModel> notification;
 
   factory Notifications.fromJson(Map<String, dynamic> json) => _$NotificationsFromJson(json);
 
