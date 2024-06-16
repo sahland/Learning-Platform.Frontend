@@ -11,7 +11,9 @@ class FirstRoutes {
       ),
       AutoRoute(page: FavoriteCoursesRoute.page),
       AutoRoute(page: CourseRoute.page),
-      AutoRoute(page: ModuleRoute.page)
+      AutoRoute(page: ModuleRoute.page),
+      AutoRoute(page: NoAuthFirstRoute.page),
+
     ]
   );
 }

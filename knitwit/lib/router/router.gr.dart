@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AuthRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AuthScreen(),
+      );
+    },
     CompletedCourseRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -81,6 +87,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MyCoursesScreen(),
       );
     },
+    NoAuthFirstRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NoAuthFirstScreen(),
+      );
+    },
+    NoauthProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NoauthProfileScreen(),
+      );
+    },
     NotificationsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -105,6 +123,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const ProfileWrapperScreen()),
       );
     },
+    RedactModuleRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RedactModuleScreen(),
+      );
+    },
+    RegisterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RegisterScreen(),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -112,6 +142,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AuthScreen]
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
+      : super(
+          AuthRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -269,6 +313,34 @@ class MyCoursesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NoAuthFirstScreen]
+class NoAuthFirstRoute extends PageRouteInfo<void> {
+  const NoAuthFirstRoute({List<PageRouteInfo>? children})
+      : super(
+          NoAuthFirstRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NoAuthFirstRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NoauthProfileScreen]
+class NoauthProfileRoute extends PageRouteInfo<void> {
+  const NoauthProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          NoauthProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NoauthProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [NotificationsScreen]
 class NotificationsRoute extends PageRouteInfo<void> {
   const NotificationsRoute({List<PageRouteInfo>? children})
@@ -320,6 +392,34 @@ class ProfileWrapperRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileWrapperRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RedactModuleScreen]
+class RedactModuleRoute extends PageRouteInfo<void> {
+  const RedactModuleRoute({List<PageRouteInfo>? children})
+      : super(
+          RedactModuleRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RedactModuleRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegisterScreen]
+class RegisterRoute extends PageRouteInfo<void> {
+  const RegisterRoute({List<PageRouteInfo>? children})
+      : super(
+          RegisterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
