@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TagButton extends StatefulWidget {
-  final Tag tag;
+  final KnitwitTag tag;
 
   const TagButton({super.key, required this.tag});
 
@@ -9,11 +9,11 @@ class TagButton extends StatefulWidget {
   State<TagButton> createState() => _TagButtonState();
 }
 
-class Tag {
+class KnitwitTag {
   final String text;
   bool isSelected;
 
-  Tag({required this.text, this.isSelected = false});
+  KnitwitTag({required this.text, this.isSelected = false});
 }
 
 class _TagButtonState extends State<TagButton> {
@@ -24,9 +24,10 @@ class _TagButtonState extends State<TagButton> {
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         backgroundColor: widget.tag.isSelected ? whiteColor : blackColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       onPressed: () {

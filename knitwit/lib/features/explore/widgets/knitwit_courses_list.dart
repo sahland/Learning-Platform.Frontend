@@ -6,15 +6,15 @@ import 'package:knitwit/router/router.dart';
 class KnitwitCoursesList extends StatefulWidget {
   final String nameCourse;
   final String imagePath;
-  final String description;
-  final List<String> tags;
+  //final String description;
+  //final List<String> tags;
 
   const KnitwitCoursesList({
     super.key,
     required this.nameCourse,
     required this.imagePath,
-    required this.description,
-    required this.tags
+    //required this.description,
+    //required this.tags
   });
 
   @override
@@ -67,65 +67,65 @@ class _KnitwitCoursesListState extends State<KnitwitCoursesList> {
                           ),
                         ),
                         const SizedBox(height: 15),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          alignment: WrapAlignment.spaceBetween,
-                          children: [
-                            for (final tag in widget.tags)
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF404040),
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                child: Text(
-                                  tag,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFFA4ACC3),
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
+                        // Wrap(
+                        //   spacing: 8,
+                        //   runSpacing: 8,
+                        //   alignment: WrapAlignment.spaceBetween,
+                        //   children: [
+                        //     for (final tag in widget.tags)
+                        //       Container(
+                        //         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                        //         decoration: BoxDecoration(
+                        //           color: const Color(0xFF404040),
+                        //           borderRadius: BorderRadius.circular(24),
+                        //         ),
+                        //         child: Text(
+                        //           tag,
+                        //           style: const TextStyle(
+                        //             fontSize: 12,
+                        //             fontWeight: FontWeight.w500,
+                        //             color: Color(0xFFA4ACC3),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ),
-                  IconButton(
-                    onPressed: () => setState(() => _isExpanded = !_isExpanded),
-                    icon: SvgPicture.asset(
-                      _isExpanded ? './assets/icons/arrow_up_icon.svg' : './assets/icons/arrow_down_icon.svg',
-                      color: Colors.white,
-                    ),
-                  ),
+                  // IconButton(
+                  //   onPressed: () => setState(() => _isExpanded = !_isExpanded),
+                  //   icon: SvgPicture.asset(
+                  //     _isExpanded ? './assets/icons/arrow_up_icon.svg' : './assets/icons/arrow_down_icon.svg',
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
                 ],
               ),
-              AnimatedCrossFade(
-                firstChild: const SizedBox.shrink(),
-                secondChild: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    widget.description,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                duration: const Duration(milliseconds: 300),
-                crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-              ),
+              // AnimatedCrossFade(
+              //   firstChild: const SizedBox.shrink(),
+              //   secondChild: Container(
+              //     padding: const EdgeInsets.all(16),
+              //     decoration: const BoxDecoration(
+              //       color: Colors.transparent,
+              //       borderRadius: BorderRadius.only(
+              //         bottomLeft: Radius.circular(8),
+              //         bottomRight: Radius.circular(8),
+              //       ),
+              //     ),
+              //     child: Text(
+              //       widget.description,
+              //       style: const TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 16,
+              //         fontFamily: 'Roboto',
+              //         fontWeight: FontWeight.w700,
+              //       ),
+              //     ),
+              //   ),
+              //   duration: const Duration(milliseconds: 300),
+              //   crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+              // ),
             ],
           ),
         ),
