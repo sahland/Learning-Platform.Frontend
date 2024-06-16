@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knitwit/features/editor/widgets/editor_buttons.dart';
-import 'package:knitwit/features/editor/widgets/editor_info.dart';
-import '../../../common/widgets/knitwit_title.dart';
-import '../widgets/editor_modules.dart';
+import '../../../common/common.dart';
+import '../widgets/widgets.dart';
 
 @RoutePage()
 class EditorScreen extends StatelessWidget {
@@ -44,7 +42,6 @@ class EditorScreen extends StatelessWidget {
           ),
           SliverList.builder(
             itemBuilder: (context, index) => const EditorInfo(
-                headerImage: "./assets/images/test_image_2.jpg",
                 miniImage: "./assets/images/test_image_mini.jpg",
                 nameCourse:
                     "Figma ipsum component variant main layer. Follower clip asset layer outline asset."),
