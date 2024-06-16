@@ -17,15 +17,15 @@ abstract class TagsApiClient {
   }
 
   @GET('/api/v1/tags/all')
-  Future<Tags> getTags();
+  Future<List<Tag>> getTags();
 
   @GET('/api/v1/tags/{tagId}')
   Future<Tag> getTagById(
-    @Query('tagId') int tagId,
+    @Path('tagId') int tagId,
   );
 
   @GET('/api/v1/tags/name/{tagName}')
   Future<Tag> getTagByName(
-    @Query('tagName') String tagName,
+    @Path('tagName') String tagName,
   );
 }

@@ -19,13 +19,13 @@ class _TagsApiClient implements TagsApiClient {
   String? baseUrl;
 
   @override
-  Future<Tags> getTags() async {
+  Future<List<Tag>> getTags() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Tags>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Tag>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -41,14 +41,16 @@ class _TagsApiClient implements TagsApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Tags.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Tag.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
   @override
   Future<Tag> getTagById(int tagId) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'tagId': tagId};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
@@ -59,7 +61,7 @@ class _TagsApiClient implements TagsApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/tags/{tagId}',
+              '/api/v1/tags/${tagId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -75,7 +77,7 @@ class _TagsApiClient implements TagsApiClient {
   @override
   Future<Tag> getTagByName(String tagName) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'tagName': tagName};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
@@ -86,7 +88,7 @@ class _TagsApiClient implements TagsApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/tags/name/{tagName}',
+              '/api/v1/tags/name/${tagName}',
               queryParameters: queryParameters,
               data: _data,
             )
