@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knitwit/features/settings/widgets/settings_notifications.dart';
+import '../widgets/widgets.dart';
 
 @RoutePage()
 class SettingsScreen extends StatelessWidget {
@@ -44,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(width: 50, height: 50)
             ],
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SettingsNotifications(),
           )
         ],
