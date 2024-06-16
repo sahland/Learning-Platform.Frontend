@@ -1,14 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:knitwit/common/common.dart';
-import 'package:knitwit/features/module/widgets/module_body.dart';
-import 'package:knitwit/features/module/widgets/module_title.dart';
+import '../../../common/common.dart';
+import '../widgets/widgets.dart';
 
 @RoutePage()
-class ModuleScreen extends StatelessWidget {
+class ModuleScreen extends StatefulWidget {
   const ModuleScreen({super.key});
 
+  @override
+  State<ModuleScreen> createState() => _ModuleScreenState();
+}
+
+class _ModuleScreenState extends State<ModuleScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

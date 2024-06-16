@@ -82,7 +82,7 @@ class _ModuleBodyState extends State<ModuleBody> {
             ),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         DecoratedBox(
           decoration: const BoxDecoration(
               border: Border(
@@ -96,12 +96,12 @@ class _ModuleBodyState extends State<ModuleBody> {
             height: 6.0,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 75),
+          padding:const  EdgeInsets.symmetric(horizontal: 75),
           child: Row(
             children: [
-              Text(
+              const Text(
                 'Я прошёл этот модуль',
                 style: TextStyle(
                   color: Colors.white,
@@ -110,10 +110,10 @@ class _ModuleBodyState extends State<ModuleBody> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               CupertinoSwitch(
-                  activeColor: Color(0xFF7BA1EC),
-                  thumbColor: Color(0xFF2A4285),
+                  activeColor: const Color(0xFF7BA1EC),
+                  thumbColor: const Color(0xFF2A4285),
                   value: courseCompleted,
                   onChanged: (value) => setState(() => courseCompleted = value),
               ),
