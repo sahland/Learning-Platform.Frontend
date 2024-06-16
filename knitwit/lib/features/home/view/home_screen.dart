@@ -1,7 +1,9 @@
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:knitwit/features/auth/bloc/auth_bloc.dart';
+import 'package:knitwit/features/auth/view/noauth_profile_screen.dart';
+import 'package:knitwit/features/features.dart';
 import 'package:knitwit/router/router.dart';
 
 
@@ -18,9 +20,14 @@ class HomeScreen extends StatefulWidget {
 
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -80,8 +87,25 @@ class HomeScreen extends StatelessWidget {
       },
     );
   }
-
   void _openPage(int index, TabsRouter tabsRouter) {
-    tabsRouter.setActiveIndex(index);
+    if (index == 2) {
+      if (isAuthorized) {
+        tabsRouter.setActiveIndex(index);
+      } else {
+        context.router.push(const NoauthProfileRoute());
+      }
+    } else {
+      tabsRouter.setActiveIndex(index);
+    }
+
+    if (index == 0) {
+      if (isAuthorized) {
+        tabsRouter.setActiveIndex(index);
+      } else {
+        context.router.push(const NoAuthFirstRoute());
+      }
+    } else {
+      tabsRouter.setActiveIndex(index);
+    }
   }
 }
