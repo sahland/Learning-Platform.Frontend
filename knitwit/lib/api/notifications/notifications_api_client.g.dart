@@ -19,15 +19,13 @@ class _NotificationsApiClient implements NotificationsApiClient {
   String? baseUrl;
 
   @override
-  Future<Notification> getNotificationById(int notificationId) async {
+  Future<NotificationModel> getNotificationById(int notificationId) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'notificationId': notificationId
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<Notification>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<NotificationModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,18 +41,18 @@ class _NotificationsApiClient implements NotificationsApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Notification.fromJson(_result.data!);
+    final value = NotificationModel.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<Notifications> getNotifications() async {
+  Future<List<NotificationModel>> getNotifications() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<Notifications>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<NotificationModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -70,7 +68,10 @@ class _NotificationsApiClient implements NotificationsApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Notifications.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) =>
+            NotificationModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

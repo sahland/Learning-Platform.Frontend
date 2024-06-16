@@ -17,12 +17,12 @@ abstract class NotificationsApiClient {
   }
 
   @GET('/api/v1/notifications/{notificationsId}')
-  Future<Notification> getNotificationById(
-    @Query('notificationId') int notificationId,
+  Future<NotificationModel> getNotificationById(
+    @Path('notificationId') int notificationId,
   );
 
   @GET('/api/v1/notifications/all')
-  Future<Notifications> getNotifications(
+  Future<List<NotificationModel>> getNotifications(
   );
 
 }
