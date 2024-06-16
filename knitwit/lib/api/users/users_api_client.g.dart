@@ -19,36 +19,9 @@ class _UsersApiClient implements UsersApiClient {
   String? baseUrl;
 
   @override
-  Future<Users> getUsers() async {
+  Future<User> authProfile() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Users>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/api/v1/users',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = Users.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<User> getUserById(int userId) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'userId': userId};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
@@ -59,7 +32,7 @@ class _UsersApiClient implements UsersApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/users/{userId}',
+              '/api/v1/users/profile',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -73,20 +46,20 @@ class _UsersApiClient implements UsersApiClient {
   }
 
   @override
-  Future<Users> getSubscibedCourses(int userId) async {
+  Future<User> redactUser(int userId) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'userId': userId};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Users>(Options(
-      method: 'GET',
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(Options(
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/api/v1/users/{userId}/courses',
+              '/api/v1/users/${userId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -95,7 +68,7 @@ class _UsersApiClient implements UsersApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Users.fromJson(_result.data!);
+    final value = User.fromJson(_result.data!);
     return value;
   }
 
