@@ -29,14 +29,6 @@ class _CourseTitleState extends State<CourseTitle> {
             ),
           ),
         ),
-        const SizedBox(height: 5),
-        LinearProgressIndicator(
-          minHeight: 16,
-          borderRadius: BorderRadius.circular(22),
-          value: widget.percentCompleted,
-          color: const Color(0xFF48DFC4),
-        ),
-        const SizedBox(height: 10),
       ],
     );
   }

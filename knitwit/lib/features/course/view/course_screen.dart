@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:knitwit/features/course/widgets/course_info.dart';
-import 'package:knitwit/features/course/widgets/course_modules.dart';
-import 'package:knitwit/features/course/widgets/course_title.dart';
+import '../widgets/widgets.dart';
 
 @RoutePage()
-class CourseScreen extends StatelessWidget {
+class CourseScreen extends StatefulWidget {
   const CourseScreen({super.key});
 
+  @override
+  State<CourseScreen> createState() => _CourseScreenState();
+}
+
+class _CourseScreenState extends State<CourseScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -38,12 +41,13 @@ class CourseScreen extends StatelessWidget {
               icon: SvgPicture.asset('./assets/icons/arrow_left_icon.svg'),
             ),
             actions: [
-              SizedBox(width: 50, height: 50)
+              const SizedBox(width: 50, height: 50)
             ],
             backgroundColor: theme.primaryColor,
           ),
           SliverToBoxAdapter(
             child: CourseInfo(
+              percentCompleted: 0.54,
               tags: courseTags,
               courseName: 'Figma ipsum component variant main layer. Follower clip asset layer outline asset.',
               author: 'Username',
@@ -57,3 +61,4 @@ class CourseScreen extends StatelessWidget {
     );
   }
 }
+

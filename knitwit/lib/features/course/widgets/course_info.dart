@@ -7,32 +7,32 @@ class CourseInfo extends StatefulWidget {
     required this.tags,
     required this.courseName,
     required this.author,
+    required this.percentCompleted
   });
 
   final List<String> tags;
   final String courseName;
   final String author;
+  final double percentCompleted;
 
   @override
   State<CourseInfo> createState() => _CourseInfoState();
 }
 
 class _CourseInfoState extends State<CourseInfo> {
-  late bool isFavorite = false;
-  late bool _selectedEstimation = false;
-  late bool _isEstimationSelected = false;
+  // late bool isFavorite = false;
+  // late bool _selectedEstimation = false;
+  // late bool _isEstimationSelected = false;
+  bool _isExpanded = true;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 140,
-          width: double.infinity,
-          child: Image.asset(
-            './assets/images/test_image.jpg',
-            fit: BoxFit.cover,
-          ),
+        LinearProgressIndicator(
+          minHeight: 10,
+          value: widget.percentCompleted,
+          color: const Color(0xFF48DFC4),
         ),
         const SizedBox(height: 10),
         Padding(
@@ -91,19 +91,36 @@ class _CourseInfoState extends State<CourseInfo> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                AnimatedContainer(
+                  duration: const Duration(microseconds: 200),
+                  child: ElevatedButton(
+                   onPressed: () {
+                    setState(() {
+                      _isExpanded = !_isExpanded;
+                    });
+                   },
+                   child:  Row(
+                    children: [
+                      SvgPicture.asset('./assets/icons/star_icon.svg'),
+                      const SizedBox(width: 10),
+                      const Text(
+                        'Подписаться',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      ],
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:const  Color(0xFFF404040),
+                      padding: const EdgeInsets.symmetric(horizontal: 10)
+                    ),
+                   ),
+                  ),
               ],
-            ),
-            const Spacer(),
-            IconButton(
-              onPressed: () {
-                setState(() => isFavorite = !isFavorite);
-              },
-              icon: SvgPicture.asset('./assets/icons/star_icon.svg'),
-              selectedIcon: SvgPicture.asset(
-                  './assets/icons/star_icon.svg',
-                  color: const Color(0xFFBE1257),
-              ),
-              isSelected: isFavorite,
             ),
             // Row(
             //   children: [
