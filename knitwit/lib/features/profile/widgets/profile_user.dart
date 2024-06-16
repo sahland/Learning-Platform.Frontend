@@ -1,21 +1,22 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:knitwit/common/widgets/base_long_button.dart';
 import 'package:knitwit/router/router.dart';
+import '../../../common/common.dart';
 
-class ProfileUsers extends StatefulWidget {
+class ProfileUser extends StatelessWidget {
+  const ProfileUser({
+    super.key,
+    this.username,
+    this.userId,
+  });
 
-  const ProfileUsers({super.key,});
+  final String? username;
+  final String? userId;
 
-  @override
-  State<ProfileUsers> createState() => _ProfileUsersState();
-}
-
-class _ProfileUsersState extends State<ProfileUsers>{
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,97 +27,96 @@ class _ProfileUsersState extends State<ProfileUsers>{
             ),
           ),
           const SizedBox(height: 20),
-          const Row(
+          Row(
             children: [
               Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                          'Username',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w700
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      username ?? '',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w700,
                       ),
-                      SizedBox(height: 4),
-                      Text(
-                        'User ID: 1234567890',
-                        style: TextStyle(
-                            color: Color(0xFFA4ACC3),
-                            fontSize: 12,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w500
-                        ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'User ID: ${userId ?? ''}',
+                      style: const TextStyle(
+                        color: Color(0xFFA4ACC3),
+                        fontSize: 12,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  )
+                    ),
+                  ],
+                ),
               )
             ],
           ),
           const SizedBox(height: 10),
           Center(
-            child:
-            ElevatedButton(
+            child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFBE1257),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
-                )
+                ),
               ),
-              onPressed:() {
+              onPressed: () {
                 context.router.push(const ProfileRedactRoute());
               },
               child: const Text(
-                  'Редактировать профиль',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
+                'Редактировать профиль',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
           const SizedBox(height: 10),
           DecoratedBox(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                  )
-                )
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.white,
+                  width: 0.5,
+                ),
               ),
+            ),
             child: Container(
               height: 6.0,
             ),
           ),
           const SizedBox(height: 10),
           BaseLongButton(
-              onPressed: () async =>
-                await context.router.push(const FavoriteCoursesRoute()),
-              title: 'Отслеживаемые курсы',
-              textColor: Colors.white,
+            onPressed: () async =>
+              await context.router.push(const FavoriteCoursesRoute()),
+            title: 'Отслеживаемые курсы',
+            textColor: Colors.white,
           ),
           BaseLongButton(
-              onPressed: () async =>
-                await context.router.push(const CompletedCourseRoute()),
-              title: 'Пройденные курсы',
-              textColor: Colors.white,
+            onPressed: () async =>
+              await context.router.push(const CompletedCourseRoute()),
+            title: 'Пройденные курсы',
+            textColor: Colors.white,
           ),
           BaseLongButton(
-              onPressed: () async =>
-                await context.router.push(const EditorRoute()),
-              title: 'Создать курсы',
-              textColor: Colors.white,
+            onPressed: () async =>
+              await context.router.push(const EditorRoute()),
+            title: 'Создать курсы',
+            textColor: Colors.white,
           ),
           BaseLongButton(
-              onPressed: () async =>
-                await context.router.push(const MyCoursesRoute()),
-              title: 'Созданные мной курсы',
+            onPressed: () async =>
+              await context.router.push(const MyCoursesRoute()),
+            title: 'Созданные мной курсы',
             textColor: Colors.white,
           ),
           ElevatedButton(
@@ -151,4 +151,3 @@ class _ProfileUsersState extends State<ProfileUsers>{
     );
   }
 }
-
