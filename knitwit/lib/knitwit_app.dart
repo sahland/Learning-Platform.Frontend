@@ -7,10 +7,19 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:knitwit/api/api.dart';
 import 'package:knitwit/api/tags/tags_api_client.dart';
 import 'package:knitwit/features/auth/bloc/auth_bloc.dart';
+import 'package:knitwit/features/editor/bloc/bloc.dart';
 import 'package:knitwit/features/explore/bloc/bloc.dart';
+import 'package:knitwit/features/favorite_courses/bloc/bloc.dart';
+import 'package:knitwit/features/module/bloc/module_bloc.dart';
 import 'package:knitwit/features/notifications/bloc/bloc.dart';
 import 'package:knitwit/features/profile/bloc/profile_bloc.dart';
+import 'package:knitwit/features/profile_redact/bloc/profile_redact_bloc.dart';
 import 'package:knitwit/router/router.dart';
+import 'package:provider/provider.dart';
+
+import 'common/common.dart';
+import 'features/course/bloc/bloc.dart';
+import 'features/explore/widgets/widgets.dart';
 
 class KnitwitApp extends StatefulWidget {
   const KnitwitApp({super.key});
@@ -25,7 +34,6 @@ class _KnitwitAppState extends State<KnitwitApp> {
   final coursesApiClient = CoursesApiClient.create(apiUrl: dotenv.env['API_KEY']);
   final tagsApiClient = TagsApiClient.create(apiUrl: dotenv.env['API_KEY']);
   final courseRatingsApiClient = CourseRatingsApiClient.create(apiUrl: dotenv.env['API_KEY']);
-  final courseSectionsApiClient = CourseSectionsApiClient.create(apiUrl: dotenv.env['API_KEY']);
   final learningProgressesApiClient = LearningProgressesApiClient.create(apiUrl: dotenv.env['API_KEY']);
   final notificationsApiClient = NotificationsApiClient.create(apiUrl: dotenv.env['API_KEY']);
   final usersApiClient = UsersApiClient.create(apiUrl: dotenv.env['API_KEY']);
@@ -60,12 +68,47 @@ class _KnitwitAppState extends State<KnitwitApp> {
           ),
         ),
         BlocProvider(
+          create: (context) => ProfileRedactBloc(
+            storage: storage,
+            usersApiClient: usersApiClient
+          ),
+        ),
+        BlocProvider(
           create: (context) => AuthBloc(
             authControllerApiClient: authControllerApiClient,
             usersApiClient: usersApiClient,
             storage: storage,
           ),
         ),
+        BlocProvider(
+          create: (context) => CourseBloc(
+            courseApiClient: coursesApiClient,
+            storage: storage
+          )
+        ),
+        BlocProvider(
+            create: (context) => FavoriteCourseBloc(
+              usersApiClient: usersApiClient,
+              coursesApiClient: coursesApiClient
+            )
+          ),
+        BlocProvider(
+          create: (context) => EditorBloc(
+            coursesApiClient: coursesApiClient, 
+            tagsApiClient: tagsApiClient,
+            usersApiClient: usersApiClient
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ModuleBloc(
+            coursesApiClient: coursesApiClient, 
+          ),
+        ),
+        MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => KnitwitTagNotifier()),
+            ]
+          ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -78,6 +121,7 @@ class _KnitwitAppState extends State<KnitwitApp> {
         ),
         routerConfig: _router.config(),
       ),
+
     );
   }
 }
