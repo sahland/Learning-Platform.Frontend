@@ -30,15 +30,11 @@ class _AuthBoxState extends State<AuthBox> {
       listener: (context, state) {
         if (state is AuthAuthorizedState) {
           context.router.push(const ProfileRoute());
-        } else if (state is AuthFailedAuthorizedState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Authorization error: ${state.error}')),
-          );
         }
       },
       child: Column(
         children: [
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           const Image(
             image: AssetImage('./assets/images/knitwit_big_icon.png')
           ),
@@ -60,12 +56,12 @@ class _AuthBoxState extends State<AuthBox> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Логин',
                 hintStyle: TextStyle(color: Color(0xFF787878)),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               ),
-              style: TextStyle(color: Color(0xFF787878)),
+              style: const TextStyle(color: Color(0xFF787878)),
             ),
           ),
           const SizedBox(height: 20),
@@ -73,16 +69,16 @@ class _AuthBoxState extends State<AuthBox> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
               controller: _passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Пароль',
                 hintStyle: TextStyle(color: Color(0xFF787878)),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               ),
               obscureText: true,
-              style: TextStyle(color: Color(0xFF787878)),
+              style: const TextStyle(color: Color(0xFF787878)),
             ),
           ),
-          SizedBox(height: 140),
+          const SizedBox(height: 140),
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(

@@ -30,12 +30,18 @@ class AuthAuthorizeEvent extends AuthEvent {
 class AuthRegisterEvent extends AuthEvent {
   const AuthRegisterEvent({
     this.completer,
-    required this.user
+    required this.username,
+    required this.email,
+    required this.password,
+    required this.confirmPassword,
   });
 
-  final User user;
+  final String username;
+  final String email;
+  final String password;
+  final String confirmPassword;
   final Completer? completer;
 
   @override
-  List<Object?> get props => super.props..addAll([completer, user]);
+  List<Object?> get props => super.props..addAll([username, email, password, confirmPassword, completer]);
 }

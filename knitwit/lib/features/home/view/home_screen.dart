@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return AutoTabsRouter(
       duration: const Duration(milliseconds: 250),
       routes: const [
-        FirstRoute(),
+        NoAuthFirstRoute(),
         ExploreWrapperRoute(),
         ProfileRoute()
       ],
@@ -99,10 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     if (index == 0) {
-      if (isAuthorized) {
-        tabsRouter.setActiveIndex(index);
+      if (isAuthorized == true) {
+        context.router.push(const FirstRoute());
       } else {
-        context.router.push(const NoAuthFirstRoute());
+        tabsRouter.setActiveIndex(index);
       }
     } else {
       tabsRouter.setActiveIndex(index);

@@ -23,7 +23,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   @override
   void initState() {
-    BlocProvider.of<NotificationBloc>(context).add(NotificationsListEvent());
+    BlocProvider.of<NotificationBloc>(context).add(const NotificationsListEvent());
     super.initState();
   }
 
@@ -88,7 +88,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 child: CircularProgressIndicator(
                   color: Color(0xFFFBE1257),
                 )
-                ),
+              ),
             );
             }
             ),

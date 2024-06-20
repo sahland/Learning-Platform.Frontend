@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../common/common.dart';
+import '../bloc/bloc.dart';
 
 class TagButton extends StatefulWidget {
   final KnitwitTag tag;
@@ -7,13 +11,6 @@ class TagButton extends StatefulWidget {
 
   @override
   State<TagButton> createState() => _TagButtonState();
-}
-
-class KnitwitTag {
-  final String text;
-  bool isSelected;
-
-  KnitwitTag({required this.text, this.isSelected = false});
 }
 
 class _TagButtonState extends State<TagButton> {
@@ -31,6 +28,13 @@ class _TagButtonState extends State<TagButton> {
         ),
       ),
       onPressed: () {
+        final tagNotifier = context.read<KnitwitTagNotifier>();
+        tagNotifier.toggleTagSelection(widget.tag.text);
+
+        final exploreBloc = BlocProvider.of<ExploreBloc>(context);
+        final selectedTags = tagNotifier.selectedTags;
+        exploreBloc.add(FilterCoursesByTag(selectedTags));
+
         setState(() {
           widget.tag.isSelected = !widget.tag.isSelected;
         });

@@ -1,18 +1,26 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:knitwit/features/auth/bloc/auth_bloc.dart';
 import 'package:knitwit/router/router.dart';
 import '../../../common/common.dart';
 
-class ProfileUser extends StatelessWidget {
+class ProfileUser extends StatefulWidget {
   const ProfileUser({
     super.key,
     this.username,
     this.userId,
+    required this.imageUrl
   });
 
   final String? username;
   final String? userId;
+  final String imageUrl;
 
+  @override
+  State<ProfileUser> createState() => _ProfileUserState();
+}
+
+class _ProfileUserState extends State<ProfileUser> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,10 +28,13 @@ class ProfileUser extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Center(
+          Center(
             child: CircleAvatar(
               radius: 63,
-              backgroundImage: AssetImage('./assets/images/user_avatar.jpg'),
+              backgroundImage: NetworkImage(widget.imageUrl),
+              onBackgroundImageError: (_, __) {
+                // Обработка ошибки загрузки изображения
+              },
             ),
           ),
           const SizedBox(height: 20),
@@ -34,7 +45,7 @@ class ProfileUser extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      username ?? '',
+                      widget.username ?? '',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -44,7 +55,7 @@ class ProfileUser extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'User ID: ${userId ?? ''}',
+                      'User ID: ${widget.userId ?? ''}',
                       style: const TextStyle(
                         color: Color(0xFFA4ACC3),
                         fontSize: 12,
@@ -91,7 +102,7 @@ class ProfileUser extends StatelessWidget {
               ),
             ),
             child: Container(
-              height: 6.0,
+              height: 5.0,
             ),
           ),
           const SizedBox(height: 10),
@@ -113,12 +124,12 @@ class ProfileUser extends StatelessWidget {
             title: 'Создать курсы',
             textColor: Colors.white,
           ),
-          BaseLongButton(
-            onPressed: () async =>
-              await context.router.push(const MyCoursesRoute()),
-            title: 'Созданные мной курсы',
-            textColor: Colors.white,
-          ),
+          // BaseLongButton(
+          //   onPressed: () async =>
+          //     await context.router.push(const MyCoursesRoute()),
+          //   title: 'Созданные мной курсы',
+          //   textColor: Colors.white,
+          // ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
@@ -128,7 +139,10 @@ class ProfileUser extends StatelessWidget {
                 borderRadius: BorderRadius.circular(0),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              isAuthorized = false;
+              context.router.push(const NoauthProfileRoute());
+            },
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.zero,

@@ -26,7 +26,7 @@ class _EditorInfoState extends State<EditorInfo> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
+                  child: Image.network(
                     widget.miniImage,
                     width: 64,
                     height: 64,

@@ -41,7 +41,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           log('ProfileLoadedState emitted with user: ${user.toJson()}');
         } else {
           log('Access Token is empty');
-          emit(const ProfileFailure(error: 'Access Token is empty'));
+          emit(const ProfileFailure(error: 'Access Token is empty(ProfileBloc)'));
         }
       } else {
         log('Access Token is null');

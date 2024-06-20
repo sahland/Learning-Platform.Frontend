@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLogoutEvent>(_logout);
     on<AuthCheckLoginInAppEvent>(_checkLoginInApp);
     on<AuthAuthorizeEvent>(_login);
+    on<AuthRegisterEvent>(_register);
   }
 
   final UsersApiClient _usersApiClient;
@@ -41,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         Auth(username: event.username, password: event.password),
       );
       await _storage.write(key: 'token', value: token.token);
-      log('Token saved: ${token.token}');  // Логирование сохранения токена
+      log('Token saved: ${token.token}');
       isAuthorized = true;
       emit(AuthAuthorizedState());
       event.completer?.complete();
@@ -54,8 +55,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       event.completer?.completeError(error);
     }
   }
-
-
 
   FutureOr<void> _logout(
     AuthLogoutEvent event,
@@ -88,6 +87,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } catch (error) {
       emit(AuthFailedAuthorizedState(error: error));
+    }
+  }
+
+  FutureOr<void> _register(
+    AuthRegisterEvent event,
+    Emitter<AuthState> emit
+  ) async {
+    try {
+      await _authControllerApiClient.registration(
+        event.username,
+        event.email,
+        event.password,
+        event.confirmPassword
+      );
+    } catch (error) {
+      emit(AuthFailedAuthorizedState(error: error));
+    } finally {
+      event.completer?.complete();
     }
   }
 }

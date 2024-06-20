@@ -84,7 +84,7 @@ class _LastCourseBoxState extends State<LastCourseBox> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      context.router.push(const ModuleRoute());
+                      //context.router.push(const ModuleRoute());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,

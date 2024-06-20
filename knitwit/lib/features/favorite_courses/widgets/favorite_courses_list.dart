@@ -25,7 +25,7 @@ class FavoriteCoursesList extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       child: GestureDetector(
         onTap: () {
-          context.router.push(const CourseRoute());
+          //context.router.push(const CourseRoute());
         },
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -36,7 +36,7 @@ class FavoriteCoursesList extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
+                    child: Image.network(
                       imagePath,
                       width: 64,
                       height: 64,

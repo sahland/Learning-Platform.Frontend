@@ -35,3 +35,11 @@ class ExploreInit extends ExploreEvent {
   final Completer<void>? completer;
   const ExploreInit({this.completer});
 }
+
+class FilterCoursesByTag extends ExploreEvent {
+  final List<String> selectedTags;
+  const FilterCoursesByTag(this.selectedTags);
+
+  @override
+  List<Object?> get props => [selectedTags];
+}

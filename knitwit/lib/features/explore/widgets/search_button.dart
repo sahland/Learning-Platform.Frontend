@@ -8,7 +8,6 @@ import '../../../common/common.dart';
 class SearchButton extends StatefulWidget {
   const SearchButton({
     super.key,
-    //required this.controller
   });
 
   @override
@@ -16,8 +15,6 @@ class SearchButton extends StatefulWidget {
 }
 
 class _SearchButtonState extends State<SearchButton> {
-
-  //final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -31,32 +28,27 @@ class _SearchButtonState extends State<SearchButton> {
             color: textColor,
           ),
           Expanded(
-              child: Container(
-                child: TextField(
-                  onSubmitted: _onSearch,
-                  //controller: controller,
-                  decoration: InputDecoration(
-                    hintText: 'Поиск...',
-                    hintStyle:
-                      TextStyle(color: textColor),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 5),
-                    enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
-                    border: const OutlineInputBorder(borderSide: BorderSide.none),
-
-                  ),
-                  style: TextStyle(color: textColor),
-                ),
-              )
-          )
+            child: TextField(
+              onSubmitted: _onSearch,
+              decoration: InputDecoration(
+                hintText: 'Поиск...',
+                hintStyle: TextStyle(color: textColor),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+                enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+                border: const OutlineInputBorder(borderSide: BorderSide.none),
+              ),
+              style: TextStyle(color: textColor),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Future<void> _onSearch(value) async {
-     final exploreBloc = BlocProvider.of<ExploreBloc>(context);
-     final Completer completer = Completer();
-     exploreBloc.add(SearchCourses(keyword: value, completer: completer));
-     completer.future;
+  Future<void> _onSearch(String value) async {
+    final exploreBloc = BlocProvider.of<ExploreBloc>(context);
+    final completer = Completer();
+    exploreBloc.add(SearchCourses(keyword: value, completer: completer));
+    await completer.future;
   }
 }

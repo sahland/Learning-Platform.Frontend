@@ -17,6 +17,7 @@ class _ProfileUserState extends State<ProfileUser> {
         children: [
           Center(
             child: CircleAvatar(
+              backgroundImage: NetworkImage('http://knitwit.ru:9000/knitwit/user_avatars/standart_avatar.png'),
               radius: 63,
             ),
           ),

@@ -23,7 +23,7 @@ class CompletedCoursesList extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       child: GestureDetector(
         onTap: () {
-          context.router.push(const CourseRoute());
+          //context.router.push(const CourseRoute());
         },
         child: Padding(
           padding: const EdgeInsets.all(10),

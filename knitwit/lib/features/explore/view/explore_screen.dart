@@ -5,8 +5,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:knitwit/features/explore/bloc/bloc.dart';
+import '../../../common/common.dart';
 import '../widgets/widgets.dart';
-
 
 @RoutePage()
 class ExploreScreen extends StatefulWidget {
@@ -17,6 +17,8 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+  int? selectedCourseId;
+
   @override
   void initState() {
     super.initState();
@@ -28,12 +30,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    //AppMetrica.reportEvent('Viewing the catalog');
-
     return Scaffold(
       body: RefreshIndicator(
         color: Colors.white,
-        backgroundColor: Color(0xFFFBE1257),
+        backgroundColor: const Color(0xFFFBE1257),
         onRefresh: () async {
           _refreshScreen(context);
         },
@@ -52,37 +52,41 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 preferredSize: Size.fromHeight(60),
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              sliver: BlocBuilder<ExploreBloc, ExploreState>(
-                builder: (context, state) {
-                  if (state is ExploreLoaded) {
-                    return SliverToBoxAdapter(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: state.blocTags.map((tag) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 4),
-                              child: TagButton(
-                                tag: KnitwitTag(text: tag.tagName),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    );
-                  }
-                  return const SliverFillRemaining(
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xFFFBE1257),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            // SliverPadding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            //   sliver: BlocBuilder<ExploreBloc, ExploreState>(
+            //     builder: (context, state) {
+            //       if (state is ExploreLoaded) {
+            //         WidgetsBinding.instance.addPostFrameCallback((_) {
+            //           final tags = state.blocTags.map((tag) => KnitwitTag(text: tag.tagName)).toList();
+            //           context.read<KnitwitTagNotifier>().setTags(tags);
+            //         });
+            //         return SliverToBoxAdapter(
+            //           child: SingleChildScrollView(
+            //             scrollDirection: Axis.horizontal,
+            //             child: Row(
+            //               children: state.blocTags.map((tag) {
+            //                 return Padding(
+            //                   padding: const EdgeInsets.symmetric(horizontal: 4),
+            //                   child: TagButton(
+            //                     tag: KnitwitTag(text: tag.tagName),
+            //                   ),
+            //                 );
+            //               }).toList(),
+            //             ),
+            //           ),
+            //         );
+            //       }
+            //       return const SliverFillRemaining(
+            //         child: Center(
+            //           child: CircularProgressIndicator(
+            //             color: Color(0xFFFBE1257),
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
             BlocBuilder<ExploreBloc, ExploreState>(
               builder: (context, state) {
                 if (state is ExploreLoaded) {
@@ -90,8 +94,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) => KnitwitCoursesList(
                         nameCourse: state.blocAllCourses[index].title,
-                        //imagePath: state.blocAllCourses[index].courseAvatarKey,
-                        imagePath: './assets/images/test_image_mini.jpg',
+                        imagePath: 'http://knitwit.ru:9000/knitwit/${state.blocAllCourses[index].courseAvatarKey}',
+                        courseId: state.blocAllCourses[index].courseId,
+                        isSelected: state.blocAllCourses[index].courseId == selectedCourseId,
+                        tags: state.blocAllCourses[index].tags.map((tag) => tag.tagName).toList(),
+                        onCourseSelected: () {
+                          setState(() {
+                            selectedCourseId = state.blocAllCourses[index].courseId;
+                          });
+                        },
                       ),
                       childCount: state.blocAllCourses.length,
                     ),
@@ -119,5 +130,3 @@ class _ExploreScreenState extends State<ExploreScreen> {
     await completer.future;
   }
 }
-
-

@@ -57,7 +57,7 @@ class _NoAuthLastCourseBoxState extends State<NoAuthLastCourseBox> {
                 color: const Color(0xFF49DFC4),
               ),
             const SizedBox(height: 15),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Padding(
@@ -73,28 +73,28 @@ class _NoAuthLastCourseBoxState extends State<NoAuthLastCourseBox> {
                       ),
                     ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      context.router.push(const ExploreRoute());
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        )
-                    ),
-                    child: const Text(
-                        'Перейти в каталог',
-                        style: TextStyle(
-                          color: Color(0xFFBE1257),
-                          fontSize: 16,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                        ),
-                    )
-                )
+                // ElevatedButton(
+                //     onPressed: () {
+                //       context.router.push(const ExploreRoute());
+                //     },
+                //     style: ElevatedButton.styleFrom(
+                //         backgroundColor: Colors.transparent,
+                //         shadowColor: Colors.transparent,
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(8),
+                //         )
+                //     ),
+                //     child: const Text(
+                //         'Перейти в каталог',
+                //         style: TextStyle(
+                //           color: Color(0xFFBE1257),
+                //           fontSize: 16,
+                //           fontFamily: 'Roboto',
+                //           fontWeight: FontWeight.w500,
+                //           height: 0,
+                //         ),
+                //     )
+                // )
               ],
             )
           ],
