@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:knitwit/api/models/course.dart';
 
 part 'course_section.g.dart';
 
@@ -8,20 +7,22 @@ part 'course_section.g.dart';
 class CourseSection extends Equatable {
   const CourseSection({
     required this.sectionId,
-    required this.course,
+    required this.courseId,
+    required this.title,
     required this.content,
-    required this.sectionsNumber,
+    required this.sectionNumber
   });
 
-  final String sectionId;
-  final Course course;
+  final int sectionId;
+  final int courseId;
+  final String title;
   final String content;
-  final int sectionsNumber;
+  final int sectionNumber;
 
   factory CourseSection.fromJson(Map<String, dynamic> json) => _$CourseSectionFromJson(json);
 
   Map<String, dynamic> toJson() => _$CourseSectionToJson(this);
 
   @override
-  List<Object> get props => [content];
+  List<Object> get props => [sectionId, courseId, title, content, sectionNumber];
 }

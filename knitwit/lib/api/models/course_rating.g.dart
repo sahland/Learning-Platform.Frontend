@@ -7,9 +7,9 @@ part of 'course_rating.dart';
 // **************************************************************************
 
 CourseRating _$CourseRatingFromJson(Map<String, dynamic> json) => CourseRating(
-      ratingId: json['ratingId'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
-      course: Course.fromJson(json['course'] as Map<String, dynamic>),
+      ratingId: (json['ratingId'] as num).toInt(),
+      user: json['user'] as String,
+      course: json['course'] as String,
       value: (json['value'] as num).toInt(),
     );
 

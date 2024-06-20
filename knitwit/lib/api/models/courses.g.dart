@@ -7,11 +7,11 @@ part of 'courses.dart';
 // **************************************************************************
 
 Courses _$CoursesFromJson(Map<String, dynamic> json) => Courses(
-      courses: (json['courses'] as List<dynamic>)
-          .map((e) => Courses.fromJson(e as Map<String, dynamic>))
+      course: (json['course'] as List<dynamic>)
+          .map((e) => Course.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$CoursesToJson(Courses instance) => <String, dynamic>{
-      'courses': instance.courses,
+      'course': instance.course,
     };

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import '../../../router/router.dart';
 
 class LastCourseBox extends StatefulWidget {
@@ -32,31 +31,40 @@ class _LastCourseBoxState extends State<LastCourseBox> {
         borderRadius: BorderRadius.circular(8),
         child: Column(
           children: [
-            Image.asset(
-              widget.imagePath,
-              width: double.infinity,
-              fit: BoxFit.cover
-            ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              child: Text(
-                widget.courseTitle,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white
-                ),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0), // Скруглить углы на 10 пикселей
+                        child: Image.asset(
+                          widget.imagePath,
+                          width: 96,
+                          height: 96,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                        const SizedBox(width: 10),
+                        Flexible(
+                          flex: 1, // Занимает оставшееся место
+                          child: Text(
+                            widget.courseTitle,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                    ),
+                  ),
+                ]
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-              child: LinearProgressIndicator(
-                minHeight: 16,
-                borderRadius: BorderRadius.circular(22),
+            const SizedBox(height: 5),
+            LinearProgressIndicator(
+                minHeight: 10,
                 value: widget.progress,
                 color: const Color(0xFF49DFC4),
               ),
-            ),
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,7 +84,7 @@ class _LastCourseBoxState extends State<LastCourseBox> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      context.router.push(const ModuleRoute());
+                      //context.router.push(const ModuleRoute());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,

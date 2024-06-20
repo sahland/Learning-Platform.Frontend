@@ -5,7 +5,7 @@ class KnitwitTitle extends StatelessWidget {
 
   const KnitwitTitle({
     super.key,
-    required this.title
+    required this.title,
   });
 
   @override
@@ -19,7 +19,7 @@ class KnitwitTitle extends StatelessWidget {
           fontSize: 20,
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w500,
-          height: 0,
+          height: 1.2,
         ),
       ),
     );

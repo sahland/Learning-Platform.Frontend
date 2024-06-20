@@ -1,15 +1,18 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:knitwit/features/first/widgets/favorites_button.dart';
-import 'package:knitwit/features/first/widgets/last_course_box.dart';
-import 'package:knitwit/features/first/widgets/low_box.dart';
+import '../widgets/widgets.dart';
 
 @RoutePage()
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
 
   @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+   @override
   Widget build(BuildContext context){
     AppMetrica.reportEvent('Viewing the first screen');
     final theme = Theme.of(context);
@@ -41,7 +44,7 @@ class FirstScreen extends StatelessWidget {
           ),
           const SliverToBoxAdapter(
             child: LastCourseBox(
-                imagePath: './assets/images/test_image_2.jpg',
+                imagePath: './assets/images/test_image_mini.jpg',
                 courseTitle: "Figma ipsum component variant main layer. Follower clip asset layer outline asset.",
                 progress: 0.54,
             )

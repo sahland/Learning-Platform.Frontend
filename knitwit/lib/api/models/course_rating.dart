@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:knitwit/api/models/course.dart';
-import 'package:knitwit/api/models/user.dart';
+import 'package:knitwit/api/models/models.dart';
 
 part 'course_rating.g.dart';
 
@@ -11,12 +10,12 @@ class CourseRating extends Equatable {
     required this.ratingId,
     required this.user,
     required this.course,
-    required this.value
+    required this.value,
   });
 
-  final String ratingId;
-  final User user;
-  final Course course;
+  final int ratingId;
+  final String user;
+  final String course;
   final int value;
 
   factory CourseRating.fromJson(Map<String, dynamic> json) => _$CourseRatingFromJson(json);
@@ -24,5 +23,5 @@ class CourseRating extends Equatable {
   Map<String, dynamic> toJson() => _$CourseRatingToJson(this);
 
   @override
-  List<Object> get props => [value];
+  List<Object> get props => [ratingId, user, course, value];
 }

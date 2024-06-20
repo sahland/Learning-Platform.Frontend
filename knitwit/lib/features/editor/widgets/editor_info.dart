@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 class EditorInfo extends StatefulWidget {
   const EditorInfo({
     super.key,
-    required this.headerImage,
     required this.miniImage,
     required this.nameCourse
   });
 
-  final String headerImage;
   final String miniImage;
   final String nameCourse;
 
@@ -22,21 +20,13 @@ class _EditorInfoState extends State<EditorInfo> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 140,
-          width: double.infinity,
-          child: Image.asset(
-            widget.headerImage,
-            fit: BoxFit.cover,
-          ),
-        ),
         Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
+                  child: Image.network(
                     widget.miniImage,
                     width: 64,
                     height: 64,

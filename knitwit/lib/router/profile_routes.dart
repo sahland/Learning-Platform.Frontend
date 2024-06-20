@@ -18,6 +18,8 @@ class ProfileRoutes {
       AutoRoute(page: ModuleRoute.page),
       AutoRoute(page: MyCoursesRoute.page),
       AutoRoute(page: NotificationsRoute.page),
+      AutoRoute(page: RedactModuleRoute.page),
+      AutoRoute(page: NoauthProfileRoute.page),
     ]
   );
 }

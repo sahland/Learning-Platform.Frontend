@@ -8,8 +8,8 @@ part of 'learning_progress.dart';
 
 LearningProgress _$LearningProgressFromJson(Map<String, dynamic> json) =>
     LearningProgress(
-      progressId: json['progressId'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
+      progressId: (json['progressId'] as num).toInt(),
+      user: json['user'] as String,
       section: CourseSection.fromJson(json['section'] as Map<String, dynamic>),
       completed: json['completed'] as bool,
     );

@@ -8,16 +8,18 @@ part of 'course_section.dart';
 
 CourseSection _$CourseSectionFromJson(Map<String, dynamic> json) =>
     CourseSection(
-      sectionId: json['sectionId'] as String,
-      course: Course.fromJson(json['course'] as Map<String, dynamic>),
+      sectionId: (json['sectionId'] as num).toInt(),
+      courseId: (json['courseId'] as num).toInt(),
+      title: json['title'] as String,
       content: json['content'] as String,
-      sectionsNumber: (json['sectionsNumber'] as num).toInt(),
+      sectionNumber: (json['sectionNumber'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CourseSectionToJson(CourseSection instance) =>
     <String, dynamic>{
       'sectionId': instance.sectionId,
-      'course': instance.course,
+      'courseId': instance.courseId,
+      'title': instance.title,
       'content': instance.content,
-      'sectionsNumber': instance.sectionsNumber,
+      'sectionNumber': instance.sectionNumber,
     };

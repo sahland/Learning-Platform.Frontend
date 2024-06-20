@@ -6,12 +6,14 @@ import 'package:knitwit/router/router.dart';
 class CourseModules extends StatefulWidget {
   const CourseModules({
     super.key,
-    required this.module,
-    required this.chapter,
+    required this.moduleName,
+    required this.moduleId,
+    required this.courseId
   });
 
-  final int module;
-  final int chapter;
+  final String moduleName;
+  final int moduleId;
+  final int courseId;
 
   @override
   State<CourseModules> createState() => _CourseModulesState();
@@ -32,7 +34,7 @@ class _CourseModulesState extends State<CourseModules> {
         child: Row(
           children: [
             Text(
-              'Модуль ${widget.module}, Раздел ${widget.chapter}',
+              '${widget.moduleName}',
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
@@ -45,7 +47,10 @@ class _CourseModulesState extends State<CourseModules> {
             const Spacer(),
             IconButton(
               onPressed: () {
-                context.router.push(const ModuleRoute());
+                context.router.push(ModuleRoute(
+                  selectedSectionId: widget.moduleId,
+                  selectedCourseId: widget.courseId
+                ));
               },
               icon: SvgPicture.asset('./assets/icons/arrow_right_icon.svg'),
             ),

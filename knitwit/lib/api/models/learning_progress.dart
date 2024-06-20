@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:knitwit/api/models/course_section.dart';
-import 'package:knitwit/api/models/user.dart';
+import 'package:knitwit/api/models/models.dart';
 
 part 'learning_progress.g.dart';
 
@@ -11,11 +10,12 @@ class LearningProgress extends Equatable {
     required this.progressId,
     required this.user,
     required this.section,
-    required this.completed
+    required this.completed,
+
   });
 
-  final String progressId;
-  final User user;
+  final int progressId;
+  final String user;
   final CourseSection section;
   final bool completed;
 
@@ -24,5 +24,5 @@ class LearningProgress extends Equatable {
   Map<String, dynamic> toJson() => _$LearningProgressToJson(this);
 
   @override
-  List<Object> get props => [completed];
+  List<Object> get props => [progressId, user, section, completed];
 }

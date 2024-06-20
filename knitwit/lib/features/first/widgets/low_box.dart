@@ -39,13 +39,15 @@ class _LowBoxState extends State<LowBox> {
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        '99999',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w500,
+                      Center(
+                        child: Text(
+                          '2',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ],
@@ -83,7 +85,7 @@ class _LowBoxState extends State<LowBox> {
                       Wrap(
                         children: [
                           Text(
-                            'Figma ipsum component variant main layer. Follower clip asset layer outline asset.',
+                            'У вас нет пройденных курсов',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               color: Colors.white,
