@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:knitwit/api/api.dart';
 import 'package:retrofit/http.dart';
 import '../models/models.dart';
 
@@ -10,6 +14,7 @@ abstract class CoursesApiClient {
 
   factory CoursesApiClient.create({String? apiUrl}) {
     final dio = Dio();
+    dio.interceptors.add(TokenInterceptor(storage: const FlutterSecureStorage()));
     if (apiUrl != null) {
       return CoursesApiClient(dio, baseUrl: apiUrl);
     }
@@ -26,19 +31,20 @@ abstract class CoursesApiClient {
   );
 
   @GET('/api/v1/courses/{courseId}/tags')
-  Future<Tags> getTagsByCourseId(
+  Future<List<Tag>> getTagsByCourseId(
     @Path('courseId') int courseId,
   );
 
-  // @GET('/api/v1/courses/{courseId}/avatar')
-  // Future<String> getAvatarByCourseId(
-  //  @Path('courseId') int courseId,
-  // );
+  @GET('/api/v1/courses/{courseId}/sections')
+  Future<List<Section>> getSectionsByCourseId(
+    @Path('courseId') int courseId
+  );
 
-  // @GET('/api/v1/courses/{courseId}/sections')
-  // Future<Sections> getSectionsByCourseId(
-  //  @Path('courseId') int courseId,
-  // );
+ @GET('/api/v1/courses/{courseId}/sections/{sectionId}')
+  Future<Section> getSectionById(
+    @Path('courseId') int courseId,
+    @Path('sectionId') int sectionId
+  );
 
   @GET('/api/v1/courses/tags/{tagId}')
   Future<List<Course>> getCoursesByTagId(
@@ -50,35 +56,34 @@ abstract class CoursesApiClient {
     @Query('keyword') String keyword,
   );
 
-  //запрос всех подтвержденных курсов
   @GET('/api/v1/courses/published')
   Future<List<Course>> getPublishedCourses();
 
   @GET('/api/v1/courses/createdByUser/{userId}')
-  Future<Courses> getCoursesCreatedByUser(
+  Future<List<Course>> getCoursesCreatedByUser(
     @Path('userId') int userId,
   );
 
   @GET('/api/v1/courses/count')
   Future<Courses> getCoursesCount();
 
+  @POST('/api/v1/courses')
+  @MultiPart()
+  Future<void> createCourse(
+    @Part(name: 'text') String text,
+    @Part(name: 'file') File file
+  );
+  
+  @POST('/api/v1/courses/{courseId}/subscribe')
+  Future<Course> subscribeCourse(
+    @Part(name: 'courseId') int courseId 
+  );
+
   @PUT('/api/v1/courses/{courseId}')
   Future<Course> updateCourseById(
     @Path() int courseId,
     @Body() Courses courses
   );
-
-  // @PUT('/api/v1/courses/{courseId}/sections/{sectionId}')
-  // Future<Section> updateSection(
-  //   @Path('courseId') int courseId,
-  //   @Path('sectionId') int sectionId,
-  // );
-
-  // @DELETE('/api/v1/courses/{courseId}/sections/{sectionId}')
-  // Future<void> deleteSection(
-  //   @Path() int courseId,
-  //   @Path() int sectionId,
-  // );
 
   @DELETE('/api/v1/courses/{courseId}/tags')
   Future<void> deleteTags(

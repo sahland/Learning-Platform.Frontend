@@ -53,21 +53,19 @@ class _AuthControllerApiClient implements AuthControllerApiClient {
 
   @override
   Future<Registration> registration(
-    int userId,
     String username,
-    String avatarKey,
     String email,
-    String nickname,
+    String password,
+    String confirmPassword,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {
-      'userId': userId,
       'username': username,
-      'avatarKey': avatarKey,
       'email': email,
-      'nickname': nickname,
+      'password': password,
+      'confirmPassword': confirmPassword,
     };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<Registration>(Options(

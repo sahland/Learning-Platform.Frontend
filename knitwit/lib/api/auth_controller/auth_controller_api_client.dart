@@ -28,11 +28,10 @@ abstract class AuthControllerApiClient {
 
   @POST('/registration')
   Future<Registration> registration(
-    @Field('userId') int userId,
     @Field('username') String username,
-    @Field('avatarKey') String avatarKey,
     @Field('email') String email,
-    @Field('nickname') String nickname
+    @Field('password') String password,
+    @Field('confirmPassword') String confirmPassword,
   );
 
 }

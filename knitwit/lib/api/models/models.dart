@@ -15,6 +15,8 @@ export 'course_sections.dart';
 export 'auth.dart';
 export 'registration.dart';
 export 'token.dart';
+export 'section.dart';
+
 
 
 

@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:knitwit/api/api.dart';
 import 'package:retrofit/http.dart';
 import '../models/models.dart';
 
@@ -10,6 +12,7 @@ abstract class NotificationsApiClient {
 
   factory NotificationsApiClient.create({String? apiUrl}) {
     final dio = Dio();
+    dio.interceptors.add(TokenInterceptor(storage: const FlutterSecureStorage()));
     if (apiUrl != null) {
       return NotificationsApiClient(dio, baseUrl: apiUrl);
     }

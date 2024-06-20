@@ -75,13 +75,13 @@ class _CoursesApiClient implements CoursesApiClient {
   }
 
   @override
-  Future<Tags> getTagsByCourseId(int courseId) async {
+  Future<List<Tag>> getTagsByCourseId(int courseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Tags>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Tag>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -97,7 +97,68 @@ class _CoursesApiClient implements CoursesApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Tags.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Tag.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<Section>> getSectionsByCourseId(int courseId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Section>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/courses/${courseId}/sections',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) => Section.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<Section> getSectionById(
+    int courseId,
+    int sectionId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Section>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/courses/${courseId}/sections/${sectionId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = Section.fromJson(_result.data!);
     return value;
   }
 
@@ -189,13 +250,13 @@ class _CoursesApiClient implements CoursesApiClient {
   }
 
   @override
-  Future<Courses> getCoursesCreatedByUser(int userId) async {
+  Future<List<Course>> getCoursesCreatedByUser(int userId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Courses>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Course>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -211,7 +272,9 @@ class _CoursesApiClient implements CoursesApiClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Courses.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Course.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -239,6 +302,76 @@ class _CoursesApiClient implements CoursesApiClient {
               baseUrl,
             ))));
     final value = Courses.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<void> createCourse(
+    String text,
+    File file,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'text',
+      text,
+    ));
+    _data.files.add(MapEntry(
+      'file',
+      MultipartFile.fromFileSync(
+        file.path,
+        filename: file.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/courses',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<Course> subscribeCourse(int courseId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'courseId',
+      courseId.toString(),
+    ));
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Course>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/courses/{courseId}/subscribe',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = Course.fromJson(_result.data!);
     return value;
   }
 
