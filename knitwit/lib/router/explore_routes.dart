@@ -10,7 +10,7 @@ class ExploreRoutes {
         initial: true,
       ),
       AutoRoute(page: CourseRoute.page),
-      AutoRoute(page: ModuleRoute.page)
+      AutoRoute(page: ModuleRoute.page),
     ]
   );
 }

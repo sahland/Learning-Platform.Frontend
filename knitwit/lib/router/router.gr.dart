@@ -28,9 +28,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CourseRoute.name: (routeData) {
+      final args = routeData.argsAs<CourseRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CourseScreen(),
+        child: CourseScreen(
+          key: args.key,
+          selectedCourseId: args.selectedCourseId,
+        ),
       );
     },
     EditorRoute.name: (routeData) {
@@ -69,6 +73,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const FirstWrapperScreen()),
       );
     },
+    GuardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const GuardScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -76,9 +86,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ModuleRoute.name: (routeData) {
+      final args = routeData.argsAs<ModuleRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ModuleScreen(),
+        child: ModuleScreen(
+          key: args.key,
+          selectedSectionId: args.selectedSectionId,
+          selectedCourseId: args.selectedCourseId,
+        ),
       );
     },
     MyCoursesRoute.name: (routeData) {
@@ -174,16 +189,39 @@ class CompletedCourseRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CourseScreen]
-class CourseRoute extends PageRouteInfo<void> {
-  const CourseRoute({List<PageRouteInfo>? children})
-      : super(
+class CourseRoute extends PageRouteInfo<CourseRouteArgs> {
+  CourseRoute({
+    Key? key,
+    required int selectedCourseId,
+    List<PageRouteInfo>? children,
+  }) : super(
           CourseRoute.name,
+          args: CourseRouteArgs(
+            key: key,
+            selectedCourseId: selectedCourseId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CourseRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CourseRouteArgs> page = PageInfo<CourseRouteArgs>(name);
+}
+
+class CourseRouteArgs {
+  const CourseRouteArgs({
+    this.key,
+    required this.selectedCourseId,
+  });
+
+  final Key? key;
+
+  final int selectedCourseId;
+
+  @override
+  String toString() {
+    return 'CourseRouteArgs{key: $key, selectedCourseId: $selectedCourseId}';
+  }
 }
 
 /// generated route for
@@ -271,6 +309,20 @@ class FirstWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [GuardScreen]
+class GuardRoute extends PageRouteInfo<void> {
+  const GuardRoute({List<PageRouteInfo>? children})
+      : super(
+          GuardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GuardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -286,16 +338,44 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ModuleScreen]
-class ModuleRoute extends PageRouteInfo<void> {
-  const ModuleRoute({List<PageRouteInfo>? children})
-      : super(
+class ModuleRoute extends PageRouteInfo<ModuleRouteArgs> {
+  ModuleRoute({
+    Key? key,
+    required int selectedSectionId,
+    required int selectedCourseId,
+    List<PageRouteInfo>? children,
+  }) : super(
           ModuleRoute.name,
+          args: ModuleRouteArgs(
+            key: key,
+            selectedSectionId: selectedSectionId,
+            selectedCourseId: selectedCourseId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ModuleRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ModuleRouteArgs> page = PageInfo<ModuleRouteArgs>(name);
+}
+
+class ModuleRouteArgs {
+  const ModuleRouteArgs({
+    this.key,
+    required this.selectedSectionId,
+    required this.selectedCourseId,
+  });
+
+  final Key? key;
+
+  final int selectedSectionId;
+
+  final int selectedCourseId;
+
+  @override
+  String toString() {
+    return 'ModuleRouteArgs{key: $key, selectedSectionId: $selectedSectionId, selectedCourseId: $selectedCourseId}';
+  }
 }
 
 /// generated route for

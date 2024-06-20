@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:knitwit/router/explore_routes.dart';
 import 'package:knitwit/router/profile_routes.dart';
 
@@ -23,5 +24,6 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(page: AuthRoute.page, path: '/auth'),
     AutoRoute(page: RegisterRoute.page, path: '/register'),
+    AutoRoute(page: GuardRoute.page, path: '/guard')
   ];
 }
